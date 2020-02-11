@@ -2,9 +2,9 @@ const mongoose = require ('mongoose')
 
 const machineSchema = new mongoose.Schema(
     {
-        number: { type: Number, required:true },
-        nfc: { type:String },
-        provider:{ type: String, required: true },
+        number: { type: String, required: true, trim:true },
+        nfc: { type:String, trim:true },
+        provider:{ type: String, required: true, trim: true },
         image: { type: String }
     },
         {
