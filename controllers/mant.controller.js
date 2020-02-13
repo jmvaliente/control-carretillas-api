@@ -1,4 +1,5 @@
 const Mant = require('../models/mant.model')
+const { validationResult } = require('express-validator')
 
 module.exports.init = (req, res, next) => {
 
@@ -12,6 +13,11 @@ module.exports.init = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
+
+    const error = validationResult(req)
+    if(!error.isEmpty){
+        return res.status(400).json(error)
+    }
     
     const mant = new Mant (req.body)
     

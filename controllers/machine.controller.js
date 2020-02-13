@@ -1,4 +1,5 @@
 const Machine = require('../models/machine.model')
+const { validationResult } = require('express-validator') // result validation with express-validator
 
 module.exports.init = (req, res, next) => {
 
@@ -12,6 +13,16 @@ module.exports.init = (req, res, next) => {
 }
 
 module.exports.create = (req, res, next) => {
+
+    //validation result
+
+    const error = validationResult(req)
+
+    if(!error.isEmpty()){
+        return res.status(400).json(error)
+    }
+
+
     
     const machine = new Machine (req.body)
     machine.save()
