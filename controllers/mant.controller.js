@@ -56,3 +56,45 @@ module.exports.update = (req, res, next) => {
         .catch((error) => {console.log(error)})
 
 }
+
+module.exports.login = (req, res, next) => {
+
+    const { email, password} = req.body
+
+    if(!email || !password) {
+        
+        res.status(404).json("Email y Password son necesarios")
+        
+    }
+
+    Mant.findOne({email: email})
+        .then(user => {
+            if (!user){
+                res.status(404).json(user)
+                
+            }else{
+                return user.checkPassword(password)
+                    .then(macht =>{
+                        if(!macht){
+                            res.status(404).json(macht)
+                            
+                        }else{
+                            req.session.user = user
+                            res.status(200).json(user)
+                        }
+                    })
+            }
+        })
+
+
+}
+
+module.exports.logout = (req, res, next) => {
+
+    req.session.destroy()
+    res.clearCookie("connect.sid");
+    if(!res.session){
+        console.log("LogOut Success")
+    }
+
+}

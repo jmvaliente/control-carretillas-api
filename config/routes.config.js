@@ -26,6 +26,8 @@ router.post('/mant/create',
     ,mantController.create)
 router.delete('/mant/delete/:id',mantController.delete)
 router.put('/mant/update/:id',mantController.update)
+router.post('/mant/login',mantController.login)
+router.post('/mant/logout',mantController.logout)
 
 //Routes Oper User
 
