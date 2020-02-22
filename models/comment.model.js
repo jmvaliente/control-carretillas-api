@@ -2,9 +2,9 @@ const mongoose = require ('mongoose')
 
 const commentSchema = new mongoose.Schema(
     {
-        machineId = { type: mongoose.Schema.Types.ObjectId, ref: 'Machine'},
+        // machineId = { type: mongoose.Schema.Types.ObjectId, ref: 'Machine'},
         authorId: { type: mongoose.Schema.Types.ObjectId, ref: 'Mant' },
-        comment = { type: Array }
+        comment = { type: String }
     }
 
 )
