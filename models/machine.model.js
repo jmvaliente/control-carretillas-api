@@ -6,8 +6,8 @@ const machineSchema = new mongoose.Schema(
         nfc: { type:String, trim:true },
         nfcActive: {type:Boolean, default: false},
         provider:{ type: String, required: true, trim: true },
-        comments: { type: Array },
-        image: { type: String }
+        comments: {type: Array},
+        image: { type: Array }
     },
         {
             timestamps:true

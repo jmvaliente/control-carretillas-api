@@ -8,8 +8,8 @@ const mantSchema = new mongoose.Schema(
         name: { type:String, required: true, trim:true },
         surname: {type:String, required: true, trim:true},
         password: { type:String, required: true},
-        email: {type:String, unique: true, match: [EMAIL_PATTERN,"Email Invalido"]}
-
+		email: {type:String, unique: true, match: [EMAIL_PATTERN,"Email Invalido"]},
+		comments: {type: Array}
     },
     {
         timestamps: true
