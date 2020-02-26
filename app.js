@@ -8,9 +8,14 @@ const session = require('./config/session.config')
 //BD Configure
 require('./config/db.config')
 
+//Cors Configure
+//const cors = require ('./config/cors.config') PREGUNTAR ERROR CON MIDDLEWARE
+const cors = require('cors')
+
 //Express Configure
 const app = express()
 
+app.use(cors())
 app.use(express.json())  // Habilitar Express.json
 app.use(logger('dev'))
 app.use(cookieParser())
