@@ -12,6 +12,28 @@ module.exports.init = (req, res, next) => {
     
 }
 
+module.exports.initUse = (req, res, next) => {
+
+    Machine.find({"nfcActive":false})
+        .then((machine)=>{
+            res.json(machine)
+        })
+        .catch((error) => {console.log(error)})
+
+    
+}
+
+module.exports.initCharge = (req, res, next) => {
+
+    Machine.find({"nfcActive":true})
+        .then((machine)=>{
+            res.json(machine)
+        })
+        .catch((error) => {console.log(error)})
+
+    
+}
+
 module.exports.create = (req, res, next) => {
 
     //validation result

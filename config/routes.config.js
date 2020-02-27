@@ -7,6 +7,8 @@ const { check } = require ('express-validator') // Validator Check
 
 //Routes Machine
 router.get('/', machineController.init)
+router.get('/machine_use', machineController.initUse)
+router.get('/machine_charge', machineController.initCharge)
 router.post('/create',
     [
         check('number','El Numero es obligatorio').not().isString(), //express-validator
