@@ -82,3 +82,17 @@ module.exports.update = (req, res, next) => {
         .catch((error) => {console.log(error)})
 
 }
+
+module.exports.detail = (req, res, next) => {
+
+    Machine.findById(req.params.id)
+        .then( (machine) => {
+            if (!machine){
+                throw createError(404,"Machine no exist")
+            } else {
+                res.json(machine)
+            }
+        })
+        .catch((error) => {console.log(error)})
+
+}

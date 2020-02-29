@@ -17,6 +17,7 @@ router.post('/create',
     ,machineController.create)
 router.delete('/delete/:id',machineController.delete)
 router.put('/update/:id',machineController.update)
+router.get('/machine/:id', machineController.detail)
 
 //Routes Mantenimiento Users
 
