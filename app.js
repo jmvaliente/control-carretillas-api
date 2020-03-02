@@ -1,6 +1,10 @@
 const express = require('express')
 const logger = require('morgan')
 const cookieParser = require('cookie-parser')
+const dotenv = require('dotenv')
+//Cors Configure
+//const cors = require ('./config/cors.config') PREGUNTAR ERROR CON MIDDLEWARE
+const cors = require('./config/cors.config')
 
 //Session Configure
 const session = require('./config/session.config')
@@ -8,14 +12,12 @@ const session = require('./config/session.config')
 //BD Configure
 require('./config/db.config')
 
-//Cors Configure
-//const cors = require ('./config/cors.config') PREGUNTAR ERROR CON MIDDLEWARE
-const cors = require('cors')
 
 //Express Configure
 const app = express()
 
-app.use(cors())
+app.use(cors)
+dotenv.config()
 app.use(express.json())  // Habilitar Express.json
 app.use(logger('dev'))
 app.use(cookieParser())

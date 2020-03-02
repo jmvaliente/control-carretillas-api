@@ -1,5 +1,6 @@
 const Mant = require('../models/mant.model')
 const { validationResult } = require('express-validator')
+const jwt = require('jsonwebtoken')
 
 module.exports.init = (req, res, next) => {
 
@@ -23,7 +24,28 @@ module.exports.create = (req, res, next) => {
     
     mant.save()
         .then((mant) => {
-            res.status(202).json(mant)
+
+            console.log(process.env.SECRET_WORD)
+            console.log(mant)
+            //Create and signature Token
+            const payload = {
+
+                user:{
+                    id: mant._id
+                }
+
+            }
+
+            // signature JWT
+
+            jwt.sign(payload, process.env.SECRET_WORD, {
+                expiresIn: 3600000
+            },(error, token) =>{
+                if (error) throw error
+                
+                res.status(202).json({token})
+            })
+
         })
         .catch((error) => { console.log(error) })
 

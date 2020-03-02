@@ -1,5 +1,6 @@
 const Machine = require('../models/machine.model')
 const { validationResult } = require('express-validator') // result validation with express-validator
+const jwt = require('jsonwebtoken')
 
 module.exports.init = (req, res, next) => {
 
