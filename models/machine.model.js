@@ -7,7 +7,8 @@ const machineSchema = new mongoose.Schema(
         nfcActive: {type:Boolean, default: false},
         provider:{ type: String, required: true, trim: true },
         comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
-        image: { type: Array }
+        image: { type: Array },
+        dateActive: {type: Date}
     },
     {
         timestamps:true
