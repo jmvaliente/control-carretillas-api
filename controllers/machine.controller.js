@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 
 module.exports.init = (req, res, next) => {
 
-    Machine.find()
+    Machine.find({"completeCharge":true})
         .then((machine)=>{
             res.json(machine)
         })
@@ -15,7 +15,7 @@ module.exports.init = (req, res, next) => {
 
 module.exports.initUse = (req, res, next) => {
 
-    Machine.find({"nfcActive":false})
+    Machine.find({"nfcActive":false, "completeCharge":false})
         .then((machine)=>{
             res.json(machine)
         })
@@ -26,7 +26,7 @@ module.exports.initUse = (req, res, next) => {
 
 module.exports.initCharge = (req, res, next) => {
 
-    Machine.find({"nfcActive":true})
+    Machine.find({"nfcActive":true, "completeCharge":false})
         .then((machine)=>{
             res.json(machine)
         })

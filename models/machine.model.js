@@ -8,7 +8,8 @@ const machineSchema = new mongoose.Schema(
         provider:{ type: String, required: true, trim: true },
         comments: [{type: mongoose.Schema.Types.ObjectId, ref: 'Comment'}],
         image: { type: Array },
-        dateActive: {type: Date}
+        dateActive: {type: Date},
+        completeCharge: {type: Boolean, default:false}
     },
     {
         timestamps:true
